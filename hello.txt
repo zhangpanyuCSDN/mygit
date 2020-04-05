@@ -1,0 +1,299 @@
+1.隐藏显示菜单
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0px;padding: 0px;}
+        div{width: 260px;height: 230px;border: 2px solid rgb(134, 191, 216);margin: 100px auto;}
+        ul{list-style-type: none;}
+        ul li{padding: 7px 10px;}
+        p{background-color: rgb(197, 189, 189);padding: 8.5px;overflow: hidden;}
+        ul{background-color: rgb(200, 213, 230);}
+        span{float: right;padding-right: 10px;}
+    </style>
+    <script>
+        window.onload=function(){
+            var txt=document.getElementsByClassName("text");
+            var li=document.getElementsByClassName("list");
+            txt.onclick=function(){
+                if(li.style.dispaly=="block"){
+                    li.style.dispaly="none";
+                }
+                else{
+                    li.style.dispaly="block";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <p>播放列表<span><img src="./1.jpg" class="text"></span></p>
+        <ul class="list" style="display: block;">
+            <li>玩爱之徒-蔡依林</li>
+            <li>原谅我就是这样的女生-戴佩妮</li>
+            <li>猜不透-丁当</li>
+            <li>自导自演-周杰伦</li>
+            <li>浪漫窝-弦子</li>
+            <li>流年-王菲</li>
+        </ul>
+    </div>
+</body>
+</html>
+
+
+2.点击小图改变大图
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0px;padding: 0px;}
+        ul{list-style-type: none;overflow: hidden;}
+        ul li{float: left;}
+        ul li img{width: 200px;height: 200px;}
+        .b-img{width: 1000px;height: 600px;}
+        .wrap{margin: 50px 200px;}
+    </style>
+    <script>
+        window.onload=function(){
+            var b=document.getElementsByClassName("b-img")
+            var s=document.getElementsByClassName("m-img")
+            var li=document.getElementsByTagName("li")
+            for(var i=0;i<li.length;i++){
+                s[i].index=i;
+                s[i].onclick=function(){
+                    b[0].src=s[this.index].src
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <img src="./img/1.jpg" alt="" class="b-img">
+        </div>
+        <div class="main">
+            <ul>
+                <li><img src="./img/1.jpg" alt="" class="m-img"></li>
+                <li><img src="./img/2.jpg" alt="" class="m-img"></li>
+                <li><img src="./img/3.jpg" alt="" class="m-img"></li>
+                <li><img src="./img/4.bmp" alt="" class="m-img"></li>
+                <li><img src="./img/5.jpg" alt="" class="m-img"></li>
+            </ul>
+        </div>
+    </div>     
+</body>
+</html>
+3.页面换肤和改样式
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0px;padding: 0px;}
+        .wrap{width: 700px;height: 400px;padding-top: 100px;margin: 50px auto;background-image: url(./img/1.jpg);}
+        .main{width: 450px;height: 320px;border: 1px solid #ccc;margin: 0px auto;padding: 10px;background-color: palegoldenrod;color: black;}
+        #btn{display: block;width: 50px;height: 30px;margin: 10px auto;}
+        input{margin: 10px 5px;padding: 2px;color: black;}
+        h3{color: limegreen;}
+    </style>
+    <script>
+        window.onload=function(){
+            var wrap=document.getElementsByClassName("wrap")
+            var main=document.getElementsByClassName("main")
+            var f1=document.getElementById("f1")
+            var f2=document.getElementById("f2")
+            f2.onclick=function(){
+                main[0].style.backgroundColor="#5B8987"
+                main[0].style.color="white"
+                wrap[0].style.backgroundImage="url(./img/2.jpg)"
+            }
+            f1.onclick=function(){
+                main[0].style.backgroundColor="palegoldenrod"
+                main[0].style.color="black"
+                wrap[0].style.backgroundImage="url(./img/1.jpg)"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="main">
+            <h3>
+                可以换肤的提交框
+                <input type="button" value="皮肤一" id="f1">
+                <input type="button" value="皮肤二" id="f2">
+            </h3>
+            <p>请输入姓名：<input type="text"></p> 
+            <p>请输入密码：<input type="password"></p>
+            
+            <p>请你留言：<textarea cols="30" rows="10"></textarea>
+            <input type="button" id="btn" value="提交">
+            </p>  
+        </div>
+    </div>
+</body>
+</html>
+4.淘宝评分
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0px;padding: 0px;}
+        ul{list-style-type: none;overflow: hidden;width: 150px;margin: 100px auto;}
+        ul>li{float: left;background-image: url(./img/star.jpg);width: 27px;height: 27px;}
+        ul>li:nth-child(1){background-position: 0px -30px;}
+    </style>
+    <script>
+        window.onload=function(){
+            var s=document.getElementsByClassName("star");      
+            for(let i=0;i<s.length;i++){
+                s[i].index=i
+                s[i].onmouseover=function(){ 
+                    for(var j=0;j<s.length;j++){
+                        s[j].style.backgroundPosition=""
+                    }
+                    for(i=0;i<=this.index;i++){
+                        s[i].style.backgroundPosition="0px -30px";
+                    }    
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li class="star"></li>
+        <li class="star"></li>
+        <li class="star"></li>
+        <li class="star"></li>
+        <li class="star"></li>
+    </ul>
+</body>
+</html>
+
+5.
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0px;padding: 0px;}
+        .wrap{width: 1000px;margin: 0px auto;}
+        input{padding: 5px;width: 40px;}
+        .num{width: 30px;}
+        table{text-align: center;}
+    </style>
+    <script>
+        window.onload=function(){
+            var tab=document.getElementById("tab");
+            var btn=document.getElementsByClassName("delete");
+            for(var i=0;i<btn.length;i++){
+                btn[i].aa=i
+                btn[i].onclick=function(){
+                    var num=this.parentNode.parentNode.rowIndex
+                    tab.deleteRow(num)
+                }
+            }
+            var all=document.getElementsByClassName("all")
+            all[0].onclick=function(){
+                var alone=document.getElementsByClassName("alone")
+                for(var i=0;i<alone.length;i++){
+                    alone[i].checked=this.checked
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+    <table border="1" id="tab" width="100%">
+        <tr>
+                <td><input type="checkbox" class="all">全选</td>
+                <td>商品名</td>
+                <td>价格</td>
+                <td>数量</td>
+                <td>功能</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="alone"></td>
+            <td>小披肩</td>
+            <td>59.00</td>
+            <td>
+                <input type="button" class="add" value="+">
+                <input type="text" class="num" value="1" class="num">
+                <input type="button" class="reduce" value="-">
+            </td>
+            <td><input type="button" class="delete" value="删除"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="alone"></td>
+            <td>条纹连衣裙</td>
+            <td>99.00</td>
+            <td>
+                <input type="button" class="add" value="+">
+                <input type="text" class="num" value="1" class="num">
+                <input type="button" class="reduce" value="-">
+            </td>
+            <td><input type="button" class="delete" value="删除"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="alone"></td>
+            <td>蓝色短袖</td>
+            <td>33.00</td>
+            <td>
+                <input type="button" class="add" value="+">
+                <input type="text" class="num" value="1" class="num">
+                <input type="button" class="reduce" value="-">
+            </td>
+            <td><input type="button" class="delete" value="删除"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="alone"></td>
+            <td>气质风衣</td>
+            <td>198.00</td>
+            <td>
+                <input type="button" class="add" value="+">
+                <input type="text" class="num" value="1" class="num">
+                <input type="button" class="reduce" value="-">
+            </td>
+            <td><input type="button" class="delete" value="删除"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="alone"></td>
+            <td>牛仔裤</td>
+            <td>44.00</td>
+            <td>
+                <input type="button" class="add" value="+">
+                <input type="text" class="num" value="1" class="num">
+                <input type="button" class="reduce" value="-">
+            </td>
+            <td><input type="button" class="delete" value="删除"></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="alone"></td>
+            <td>女士丝袜</td>
+            <td>29.00</td>
+            <td>
+                <input type="button" class="add" value="+">
+                <input type="text" class="num" value="1" class="num">
+                <input type="button" class="reduce" value="-">
+            </td>
+            <td><input type="button" class="delete" value="删除"></td>
+        </tr>
+        <tr>
+            <td colspan="5">选中的商品总价是：<span>0.00</span>元</td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>
